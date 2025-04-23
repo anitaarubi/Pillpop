@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Log</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Medication Log</h1>
+        </header>
+        <main>
+            <h2>Have you taken your medication today?</h2>
+
+            {% if taken_today %}
+                <p>Yes, you have already logged your medication today.</p>
+            {% else %}
+                <p>No, you haven't logged your medication yet. Please log it now!</p>
+                <form action="/" method="POST">
+                    <label for="medication_name">Medication Name:</label>
+                    <input type="text" id="medication_name" name="medication_name" required placeholder="Enter the medication name">
+                    <button type="submit" class="btn">Log Medication</button>
+                </form>
+            {% endif %}
+        </main>
+        <footer>
+            <p>&copy; 2025 Medication Log</p>
+        </footer>
+    </div>
+</body>
+</html>
